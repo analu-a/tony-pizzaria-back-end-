@@ -1,0 +1,33 @@
+var tony_pizzaria = require ('./tony-pizzaria')
+
+const getUsuarios = function(){
+    let usuarioJson = {}
+    let arrayUsuario = []
+
+    tony_pizzaria.usuario.informacoes.forEach(function(nome){
+
+        arrayUsuario.push(nome.nome)
+
+    })
+
+    usuarioJson.nome = arrayUsuario
+    console.log(usuarioJson)
+}
+
+// getUsuarios()
+
+const getPizzaInformacoes = function(){
+
+}
+
+const getProdutos = function(){
+    console.log(tony_pizzaria.produtos)
+}
+getProdutos()
+
+//categorias
+
+//produtos
+
+//comentarios
+
