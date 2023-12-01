@@ -23,7 +23,7 @@ const getPizzaInformacoes = function(){
 const getProdutos = function(){
     console.log(tony_pizzaria.produtos)
 }
-getProdutos()
+// getProdutos()
 
 //categorias
 
