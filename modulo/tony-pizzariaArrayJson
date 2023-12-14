@@ -1,0 +1,135 @@
+var tony_pizzaria = require ('./tony-pizzaria')
+
+
+const getUsuariosNome = function(){
+    let usuarioJson = {}
+    let arrayUsuario = []
+
+    tony_pizzaria.usuario.informacoes.forEach(function(nome){
+
+        arrayUsuario.push(nome.nome)
+
+    })
+
+    usuarioJson.nome = arrayUsuario
+    return usuarioJson
+}
+
+// getUsuariosNome()
+
+
+
+const getUserInfo = function(nomeDigitado){
+
+    let nome = nomeDigitado
+   let dadosUserJSON = {}
+   let status = false
+
+   tony_pizzaria.usuario.informacoes.forEach(function(info){
+
+        if(info.nome.includes(nome)){
+
+
+            dadosUserJSON.email = info.email
+            dadosUserJSON.nome = info.nome
+            dadosUserJSON.telefone = info.telefone
+            status = true
+        }
+
+    })
+
+    if(status){
+        return dadosUserJSON 
+    } else{
+        return false
+    }
+
+
+}
+getUserInfo('Franceilda Azevedo')
+
+
+
+const getPizzaInformacoes = function(saborEscolhido){
+    let sabor = saborEscolhido
+    let infoPizzaJSON = {}
+    let status = false
+    tony_pizzaria.produtos.pizza.forEach(function(pizza){
+
+        if(pizza.sabor == sabor){
+
+            infoPizzaJSON.sabor = pizza.sabor
+            infoPizzaJSON.preco = pizza.preco
+            infoPizzaJSON.descricao = pizza.descricao
+            infoPizzaJSON.imagem = pizza.imagem
+            infoPizzaJSON.categoria = pizza.categoria
+            status = true;
+        }
+        
+    })
+    
+    if(status){
+        return infoPizzaJSON
+        
+    } else{
+        return false
+    }
+}
+
+//  getPizzaInformacoes('Queijo e tomate')
+
+
+
+ 
+const getProdutosPizzas = function(){
+    let produtosJson = {}
+    let arrayProdutos = []
+
+    tony_pizzaria.produtos.pizza.forEach(function(produtos){
+
+        produtosJson.sabor = produtos.sabor
+        produtosJson.preco = produtos.preco
+        produtos.descricao = produtos.descricao
+
+        arrayProdutos.push(produtosJson)
+
+    })
+    produtosJson.produtos = arrayProdutos
+    return produtosJson
+}
+// getProdutosPizzas()
+
+
+
+
+
+const getCategorias = function(){
+let categoriaJson = {}
+let arrayCategoria = []
+
+tony_pizzaria.categorias.categorias.forEach(function(categorias){
+
+    arrayCategoria.push(categorias.nome)
+
+})
+
+categoriaJson.categorias = arrayCategoria
+return categoriaJson
+
+
+
+}
+
+// getCategorias()
+
+
+module.exports={
+    getCategorias,
+    getPizzaInformacoes,
+    getProdutosPizzas,
+    getUserInfo,
+    getUsuariosNome
+
+}
+
+
